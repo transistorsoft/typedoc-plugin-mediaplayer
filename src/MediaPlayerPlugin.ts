@@ -7,16 +7,13 @@ import {Context} from 'typedoc/dist/lib/converter/context'
 import {SourceReference} from 'typedoc/dist/lib/models/sources/file'
 import {Options} from 'typedoc/dist/lib/utils/options/options'
 
-
 @Component({name: 'mediaplayer'})
 export class MediaPlayerPlugin extends ConverterComponent {
-    static PATTERN = '<mediaplayer:\s?(.*)>';
 
-    private re: RegExp;
+
+    static PATTERN = /<mediaplayer:\s?((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)>/gim
 
     public initialize(): void {
-        this.re = new RegExp(MediaPlayerPlugin.PATTERN, 'igm');
-
         this.listenTo(this.owner, Converter.EVENT_BEGIN, this.onBegin)
     }
 
@@ -39,24 +36,22 @@ export class MediaPlayerPlugin extends ConverterComponent {
         for ( let key in project.reflections ) {
             const reflection = project.reflections[key];
             if (reflection.comment) {
-                // <video controls="" autoplay="" name="media"><source src="https://dl.dropboxusercontent.com/s/d3e821scn5fppq6/tslocationmanager_ooooiii3_full_vol.wav?dl=0" type="audio/x-wav"></video>
-
                 let replacement = [
                 '<video controls name="media" height="50" width="200">',
                     '<source src="$1">',
                 '</audio>'
                 ].join('');
 
-                if (this.re.test(reflection.comment.shortText)) {
-                    reflection.comment.shortText = reflection.comment.shortText.replace(this.re, replacement);
+                if (MediaPlayerPlugin.PATTERN.test(reflection.comment.shortText)) {
+                    reflection.comment.shortText = reflection.comment.shortText.replace(MediaPlayerPlugin.PATTERN, replacement);
                 }
-                if (this.re.test(reflection.comment.text)) {
-                    reflection.comment.text = reflection.comment.text.replace(this.re, replacement);
+                if (MediaPlayerPlugin.PATTERN.test(reflection.comment.text)) {
+                    reflection.comment.text = reflection.comment.text.replace(MediaPlayerPlugin.PATTERN, replacement);
                 }
                 if (reflection.comment.tags) {
                     reflection.comment.tags.forEach(tag => {
-                        if (this.re.test(tag.text)) {
-                            tag.text = tag.text.replace(this.re, replacement);
+                        if (MediaPlayerPlugin.PATTERN.test(tag.text)) {
+                            tag.text = tag.text.replace(MediaPlayerPlugin.PATTERN, replacement);
                         }
                     });
                 }
