@@ -16,7 +16,12 @@
     "bitbucket",
     "gitlab"
   ],
+  "peerDependencies": {
+    "typedoc": "^0.20.33",
+    "typescript": "3.9.x || 4.0.x || 4.1.x || 4.2.x"
+  },
   "devDependencies": {
+    "typedoc": "^0.20.33",
     "typescript": "^4.2.3"
   },
   "main": "dist/main.js",
