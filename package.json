@@ -17,8 +17,7 @@
     "gitlab"
   ],
   "peerDependencies": {
-    "typedoc": "^0.20.33",
-    "typescript": "3.9.x || 4.0.x || 4.1.x || 4.2.x"
+    "typedoc": "^0.20.33"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.8",
@@ -27,8 +26,8 @@
     "@typescript-eslint/parser": "^4.18.0",
     "eslint": "^7.22.0",
     "fs-extra": "^9.1.0",
-    "typedoc": "^0.20.33",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "typedoc": "^0.20.33"
   },
   "main": "dist/main.js",
   "scripts": {
