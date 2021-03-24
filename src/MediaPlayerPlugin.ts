@@ -1,7 +1,7 @@
+import * as ts from 'typescript';
 import * as Path from 'path'
 import * as FS from 'fs-extra'
-import {Component} from 'typedoc/dist/lib/utils/component'
-import {ConverterComponent} from 'typedoc/dist/lib/converter/components'
+import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/components';
 import {Converter} from 'typedoc/dist/lib/converter/converter'
 import {Context} from 'typedoc/dist/lib/converter/context'
 import {SourceReference} from 'typedoc/dist/lib/models/sources/file'
@@ -10,10 +10,9 @@ import {Options} from 'typedoc/dist/lib/utils/options/options'
 @Component({name: 'mediaplayer'})
 export class MediaPlayerPlugin extends ConverterComponent {
 
-
     static PATTERN = /<mediaplayer:\s?((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)>/gim
 
-    public initialize(): void {
+    public initialize() {
         this.listenTo(this.owner, Converter.EVENT_BEGIN, this.onBegin)
     }
 
