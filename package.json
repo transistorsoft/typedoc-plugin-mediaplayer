@@ -1,7 +1,7 @@
 {
   "author": "Chris Scott, Transistor Software<info@transistorsoft.com>",
   "name": "@transistorsoft/typedoc-plugin-mediaplayer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "typedoc plugin to play a media file from an url",
   "homepage": "https://github.com/transistorsoft/typedoc-plugin-mediaplayer",
   "bugs": "https://github.com/transistorsoft/typedoc-plugin-mediaplayer/issues",
@@ -16,9 +16,6 @@
     "bitbucket",
     "gitlab"
   ],
-  "peerDependencies": {
-    "typedoc": "^0.20.33"
-  },
   "devDependencies": {
     "@types/fs-extra": "^9.0.8",
     "@types/node": "^14.14.35",
